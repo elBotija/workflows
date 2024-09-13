@@ -7,7 +7,7 @@ on:
 jobs:
   get_release_job:  # Nombre del job
     runs-on: ubuntu-latest
-    uses: elBotija/workflows/.github/workflows/b.yml@main
+    uses: ./.github/workflows/b.yml  
 
   process_release_job:  # Segundo job
     runs-on: ubuntu-latest
