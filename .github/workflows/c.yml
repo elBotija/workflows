@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Call intermediate workflow
         id: get_release_step  # ID del paso
-        uses: ./.github/workflows/b.yml
+        uses: ./workflows/.github/workflows/b.yml
 
   process_release_job:  # Segundo job
     runs-on: ubuntu-latest
