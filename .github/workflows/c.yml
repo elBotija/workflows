@@ -7,10 +7,6 @@ on:
 jobs:
   get_release_job:  # Nombre del job
     runs-on: ubuntu-latest
-    outputs:
-      release: ${{ steps.get_release_step.outputs.release }}  # Usamos el ID del paso para obtener el output
-    name: Call intermediate workflow
-    id: get_release_step  # ID del paso
     uses: elBotija/workflows/.github/workflows/b.yml@main
 
   process_release_job:  # Segundo job
