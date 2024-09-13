@@ -1,0 +1,15 @@
+name: Intermediate
+on:
+  workflow_call:
+
+jobs:
+  call_release:
+    runs-on: ubuntu-latest
+    outputs:
+      release: ${{ steps.get_release.outputs.release }}
+    steps:
+      - name: Call release workflow
+        id: get_release
+        uses: ./.github/workflows/a.yml
+        with:
+          version: "v2.0.0"

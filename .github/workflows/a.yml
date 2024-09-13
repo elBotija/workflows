@@ -1,0 +1,18 @@
+name: Release
+on:
+  workflow_call:
+    inputs:
+      version:
+        required: false
+        default: "v1.0.0"
+        type: string
+
+jobs:
+  create_release:
+    runs-on: ubuntu-latest
+    outputs:
+      release: ${{ steps.set_release.outputs.release }}
+    steps:
+      - name: Set release
+        id: set_release
+        run: echo "::set-output name=release::${{ inputs.version }}"

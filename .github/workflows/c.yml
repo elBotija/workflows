@@ -1,0 +1,22 @@
+name: Final
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  get_release_job:  # Nombre del job
+    runs-on: ubuntu-latest
+    outputs:
+      release: ${{ steps.get_release_step.outputs.release }}  # Usamos el ID del paso para obtener el output
+    steps:
+      - name: Call intermediate workflow
+        id: get_release_step  # ID del paso
+        uses: ./.github/workflows/b.yml
+
+  process_release_job:  # Segundo job
+    runs-on: ubuntu-latest
+    needs: get_release_job  # Referencia al nombre del job anterior
+    steps:
+      - name: Access release variable
+        run: echo "Release version is ${{ needs.get_release_job.outputs.release }}"  # Referencia al output del job anterior
