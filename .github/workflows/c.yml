@@ -5,13 +5,13 @@ on:
       - main
 
 jobs:
-  get_release_job:  # Nombre del job
+  get_release_job:
     runs-on: ubuntu-latest
-    uses: elBotija/workflows/.github/workflows/b.yml@main
+    uses: elbotija/workflows/.github/workflows/b.yml@main  # Se referencia correctamente el workflow reutilizable
 
-  process_release_job:  # Segundo job
+  process_release_job:
     runs-on: ubuntu-latest
-    needs: get_release_job  # Referencia al nombre del job anterior
+    needs: get_release_job  # Dependencia del job anterior
     steps:
       - name: Access release variable
-        run: echo "Release version is ${{ needs.get_release_job.outputs.release }}"  # Referencia al output del job anterior
+        run: echo "Release version is ${{ needs.get_release_job.outputs.release }}"  # Accede al output del job anterior
